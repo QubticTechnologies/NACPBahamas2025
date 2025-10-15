@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.so
+
+# Virtual environment
+.venv/
+env/
+venv/
+ENV/
+
+# VS Code / IDE
+.vscode/
+.idea/
+
+# Byte-compiled / cached files
+*.egg-info/
+*.egg
+
+# Logs
+*.log
+
+# Database dumps / backups
+*.sql
+*.dump
+
+# Environment files
+.env
+.env.*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Streamlit / temp files
+.streamlit/
+
+# Render / deployment local files
+render.yaml
