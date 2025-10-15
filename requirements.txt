@@ -1,0 +1,33 @@
+# GIS / Mapping
+geopandas==0.23.1          # For handling spatial data
+shapely==2.1.1              # Geometry operations (used by GeoPandas)
+fiona==1.9.4                # Read/write shapefiles
+pyproj==3.6.0               # Coordinate reference systems & projections
+rtree==1.0.1                # Spatial indexing for GeoPandas
+folium==0.17.1              # Interactive Leaflet maps in Python
+leafmap==0.25.0             # Advanced GIS/leaflet integration
+plotly==5.17.0              # Interactive maps & charts
+streamlit-folium==0.11.0    # Streamlit wrapper for folium maps
+# Core web framework
+streamlit==1.30.0
+
+# Data handling
+pandas==2.0.3
+numpy==1.26.5
+
+# Database
+SQLAlchemy==2.0.44
+psycopg2-binary==2.9.9
+
+# Password hashing
+bcrypt==4.0.1
+
+# Environment variables
+python-dotenv==1.0.0
+# Database
+
+
+# Optional (if using Flask or Streamlit)
+flask==2.3.3
+streamlit==1.30.0
+pandas==2.0.3
