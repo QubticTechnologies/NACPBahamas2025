@@ -1,7 +1,9 @@
 services:
   - type: web
-    name: QubticTechnologies
+    name: agri-census
     env: python
+    plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: streamlit run census_app/census.py --server.port $PORT --server.address 0.0.0.0
+
 
