@@ -2,7 +2,6 @@ services:
   - type: web
     name: QubticTechnologies
     env: python
-    rootDir: census_app
-    buildCommand: pip install -r ../requirements.txt
-    startCommand: streamlit run census.py --server.port $PORT --server.address 0.0.0.0
+    buildCommand: pip install -r requirements.txt
+    startCommand: streamlit run census_app/census.py --server.port $PORT --server.address 0.0.0.0
 
