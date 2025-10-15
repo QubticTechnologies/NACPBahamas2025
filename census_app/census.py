@@ -12,7 +12,7 @@ import pydeck as pdk
 sys.path.append(os.path.dirname(__file__))
 
 # --- DB & Config ---
-from census_app.db import engine
+from census.db import engine
 from census_app.config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
 
 
