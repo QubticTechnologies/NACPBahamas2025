@@ -1,12 +1,8 @@
 services:
   - type: web
-    name: agri-census
+    name: QubticTechnologies
     env: python
-    plan: free
-    buildCommand: |
-      echo "Using Python 3.11.9"
-      pyenv install -s 3.11.9
-      pyenv global 3.11.9
-      pip install --upgrade pip
-      pip install -r requirements.txt
-    startCommand: streamlit run admin_app.py
+    rootDir: census_app
+    buildCommand: pip install -r ../requirements.txt
+    startCommand: streamlit run census.py --server.port $PORT --server.address 0.0.0.0
+
