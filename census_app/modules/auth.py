@@ -58,7 +58,7 @@ def create_holder_for_user(user_id, username):
 
         st.success("📌 Holder created successfully with location!")
         st.session_state[f"holder_id_{user_id}"] = holder_id
-        st.experimental_rerun()
+        st.rerun()
 
     st.stop()
 
