@@ -48,10 +48,10 @@ holder_dashboard, agent_dashboard, admin_dashboard = _import_dashboards()
 survey_sidebar = _import_survey_sidebar()
 
 # --- Survey Forms ---
-from .modules.household_information import household_information
-from .modules.holding_labour_form import holding_labour_form
-from .modules.holder_information_form import holder_information_form
-from .helpers import calculate_age
+from census_app.modules.household_information import household_information
+from census_app.modules.holding_labour_form import holding_labour_form
+from census_app.modules.holder_information_form import holder_information_form
+from census_app.helpers import calculate_age
 
 # --- Streamlit Config ---
 st.set_page_config(page_title="🌾 Agri Census System", layout="wide")
