@@ -7,18 +7,21 @@ from sqlalchemy import text
 from datetime import date
 from streamlit_js_eval import get_geolocation
 import pydeck as pdk
+import sys, os
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Add current directory for imports
 sys.path.append(os.path.dirname(__file__))
 
 # --- DB & Config ---
-from .db import engine
-from .config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
+from census_app.db import engine
+
+from census_app.config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
 
 
 # --- Lazy Imports to avoid circular imports ---
 def _import_auth():
-    from .modules.auth import login_user, register_user, logout_user, create_holder_for_user
+    from census_app.modules.auth import login_user, register_user, logout_user, create_holder_for_user
     return login_user, register_user, logout_user, create_holder_for_user
 
 
@@ -28,13 +31,13 @@ def _import_role_sidebar():
 
 
 def _import_dashboards():
-    from .modules.dashboards import holder_dashboard, agent_dashboard
-    from .modules.admin_dashboard.dashboard import admin_dashboard
+    from census_app.modules.dashboards import holder_dashboard, agent_dashboard
+    from census_app.modules.admin_dashboard.dashboard import admin_dashboard
     return holder_dashboard, agent_dashboard, admin_dashboard
 
 
 def _import_survey_sidebar():
-    from .modules.survey_sidebar import survey_sidebar
+    from census_app.modules.survey_sidebar import survey_sidebar
     return survey_sidebar
 
 
