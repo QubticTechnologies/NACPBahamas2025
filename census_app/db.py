@@ -4,9 +4,15 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL")
+LOCAL_DEV = os.getenv("LOCAL_DEV", "True").lower() == "true"
 
-if not DATABASE_URL:
-    raise ValueError("❌ DATABASE_URL not found in environment variables")
+if LOCAL_DEV:
 
-engine = create_engine(DATABASE_URL, pool_pre_ping=True)
+    DB_USER = os.getenv("DB_USER", "servey_census_user")
+    DB_PASS = os.getenv("DB_PASS", "")
+    DB_HOST = os.getenv("DB_HOST", "127.0.0.1")
+    DB_NAME = os.getenv("DB_NAME", "servey_census")
+    engine = create_engine(f"postgresql://{DB_USER}:{DB_PASS}@{DB_HOST}:5432/{DB_NAME}")
+else:
+    DATABASE_URL = os.getenv("DATABASE_URL")
+    engine = create_engine(DATABASE_URL)
