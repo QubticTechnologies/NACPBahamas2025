@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-LOCAL_DEV = os.getenv("LOCAL_DEV", "True").lower() == "true"
+LOCAL_DEV = os.getenv("LOCAL_DEV", "False").lower() == "true"
 
 if LOCAL_DEV:
 
