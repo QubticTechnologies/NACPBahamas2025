@@ -12,13 +12,13 @@ import pydeck as pdk
 sys.path.append(os.path.dirname(__file__))
 
 # --- DB & Config ---
-from census.db import engine
-from census_app.config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
+from .db import engine
+from .config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
 
 
 # --- Lazy Imports to avoid circular imports ---
 def _import_auth():
-    from census_app.modules.auth import login_user, register_user, logout_user, create_holder_for_user
+    from .modules.auth import login_user, register_user, logout_user, create_holder_for_user
     return login_user, register_user, logout_user, create_holder_for_user
 
 
@@ -28,13 +28,13 @@ def _import_role_sidebar():
 
 
 def _import_dashboards():
-    from census_app.modules.dashboards import holder_dashboard, agent_dashboard
-    from census_app.modules.admin_dashboard.dashboard import admin_dashboard
+    from .modules.dashboards import holder_dashboard, agent_dashboard
+    from .modules.admin_dashboard.dashboard import admin_dashboard
     return holder_dashboard, agent_dashboard, admin_dashboard
 
 
 def _import_survey_sidebar():
-    from census_app.modules.survey_sidebar import survey_sidebar
+    from .modules.survey_sidebar import survey_sidebar
     return survey_sidebar
 
 
@@ -45,10 +45,10 @@ holder_dashboard, agent_dashboard, admin_dashboard = _import_dashboards()
 survey_sidebar = _import_survey_sidebar()
 
 # --- Survey Forms ---
-from census_app.modules.household_information import household_information
-from census_app.modules.holding_labour_form import holding_labour_form
-from census_app.modules.holder_information_form import holder_information_form
-from census_app.helpers import calculate_age
+from .modules.household_information import household_information
+from .modules.holding_labour_form import holding_labour_form
+from .modules.holder_information_form import holder_information_form
+from .helpers import calculate_age
 
 # --- Streamlit Config ---
 st.set_page_config(page_title="🌾 Agri Census System", layout="wide")
