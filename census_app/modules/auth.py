@@ -1,4 +1,5 @@
 # census_app/modules/auth.py
+from sqlalchemy.orm import sessionmaker
 
 import streamlit as st
 from sqlalchemy import text
