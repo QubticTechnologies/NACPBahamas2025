@@ -9,6 +9,7 @@ from census_app.modules.holder_info import show_holder_dashboard
 from census_app.config import TOTAL_SURVEY_SECTIONS
 import pandas as pd
 
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # --------------------- Streamlit-Safe Holder Creation ---------------------
 def create_holder_for_user(user_id, username):
