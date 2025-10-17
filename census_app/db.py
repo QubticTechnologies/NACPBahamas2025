@@ -3,23 +3,32 @@ from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # --------------------------------------------------------
-# Load Environment Variables (cloud-only)
+# Load Environment Variables (Render cloud deployment)
 # --------------------------------------------------------
+
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
-DB_PORT = os.getenv("DB_PORT", 5432)
+DB_PORT = os.getenv("DB_PORT", "5432")
 DB_NAME = os.getenv("DB_NAME")
 
-if not all([DB_USER, DB_PASSWORD, DB_HOST, DB_NAME]):
-    raise ValueError("❌ Database environment variables are not properly set.")
+# Optional: DATABASE_URL fallback if provided directly by Render
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 # --------------------------------------------------------
-# Database URI with SSL required for Render
+# Database Connection String
 # --------------------------------------------------------
-SQLALCHEMY_DATABASE_URI = (
-    f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
-)
+if DATABASE_URL:
+    # Prefer DATABASE_URL (single string form) if it exists
+    SQLALCHEMY_DATABASE_URI = DATABASE_URL
+else:
+    # Otherwise build it manually from component variables
+    if not all([DB_USER, DB_PASSWORD, DB_HOST, DB_NAME]):
+        raise ValueError("❌ Database environment variables are not properly set.")
+
+    SQLALCHEMY_DATABASE_URI = (
+        f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
+    )
 
 # --------------------------------------------------------
 # SQLAlchemy Engine & Session
@@ -40,7 +49,7 @@ def test_connection():
         print(f"❌ [DB] Connection failed: {e}")
 
 # --------------------------------------------------------
-# Table Constants
+# Constants
 # --------------------------------------------------------
 USERS_TABLE = "users"
 HOLDERS_TABLE = "holders"
@@ -49,9 +58,6 @@ HOLDING_LABOUR_TABLE = "holding_labour"
 HOLDING_LABOUR_PERM_TABLE = "holding_labour_permanent"
 HOLDER_SURVEY_PROGRESS_TABLE = "holder_survey_progress"
 
-# --------------------------------------------------------
-# Roles & Status Constants
-# --------------------------------------------------------
 ROLE_HOLDER = "Holder"
 ROLE_AGENT = "Agent"
 ROLE_ADMIN = "Admin"
@@ -60,9 +66,6 @@ STATUS_PENDING = "pending"
 STATUS_ACTIVE = "active"
 STATUS_APPROVED = "approved"
 
-# --------------------------------------------------------
-# Survey & Misc Options
-# --------------------------------------------------------
 TOTAL_SURVEY_SECTIONS = 5
 SEX_OPTIONS = ["Male", "Female", "Other"]
 MARITAL_STATUS_OPTIONS = [
