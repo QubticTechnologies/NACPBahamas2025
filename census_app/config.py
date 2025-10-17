@@ -2,11 +2,15 @@ import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
 from dotenv import load_dotenv
+#from census_app.db import LOCAL_DEV
+# census_app/config.py
+
+
 
 # --------------------------------------------------------
 # Environment Setup
 # --------------------------------------------------------
-os.environ["LOCAL_DEV"] = "1"  # force local mode
+#os.environ["LOCAL_DEV"] = "1"  # force local mode
 load_dotenv()
 
 LOCAL_DEV = os.environ.get("LOCAL_DEV", "0") == "1"
