@@ -1,13 +1,10 @@
 import os
 from sqlalchemy import create_engine, text
 from sqlalchemy.orm import sessionmaker, declarative_base
-from dotenv import load_dotenv
 
 # --------------------------------------------------------
-# Load Environment Variables
+# Load Environment Variables (cloud-only)
 # --------------------------------------------------------
-load_dotenv()  # optional, useful for local testing before deploying
-
 DB_USER = os.getenv("DB_USER")
 DB_PASSWORD = os.getenv("DB_PASSWORD")
 DB_HOST = os.getenv("DB_HOST")
@@ -18,7 +15,7 @@ if not all([DB_USER, DB_PASSWORD, DB_HOST, DB_NAME]):
     raise ValueError("❌ Database environment variables are not properly set.")
 
 # --------------------------------------------------------
-# Database URI with SSL for Render
+# Database URI with SSL required for Render
 # --------------------------------------------------------
 SQLALCHEMY_DATABASE_URI = (
     f"postgresql+psycopg2://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}?sslmode=require"
@@ -32,7 +29,7 @@ SessionLocal = sessionmaker(bind=engine, autoflush=False, autocommit=False, futu
 Base = declarative_base()
 
 # --------------------------------------------------------
-# Optional Test Connection
+# Optional: Test Connection
 # --------------------------------------------------------
 def test_connection():
     try:
@@ -43,7 +40,7 @@ def test_connection():
         print(f"❌ [DB] Connection failed: {e}")
 
 # --------------------------------------------------------
-# Table Constants (if you need them globally)
+# Table Constants
 # --------------------------------------------------------
 USERS_TABLE = "users"
 HOLDERS_TABLE = "holders"
