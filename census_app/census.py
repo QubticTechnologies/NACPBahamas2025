@@ -13,8 +13,8 @@ sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 sys.path.append(os.path.dirname(__file__))
 
 # --- DB & Config ---
-from db import engine
-from config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
+from census_app.db import engine
+from census_app.config import USERS_TABLE, HOLDERS_TABLE, TOTAL_SURVEY_SECTIONS
 
 # --- Lazy Imports to avoid circular imports ---
 def _import_auth():
@@ -36,12 +36,12 @@ holder_dashboard, agent_dashboard, admin_dashboard = _import_dashboards()
 survey_sidebar = _import_survey_sidebar()
 
 # --- Survey Forms & Helpers ---
-from modules.household_information import household_information
-from modules.holding_labour_form import holding_labour_form
-from modules.holder_information_form import holder_information_form
-from modules.agricultural_machinery import agricultural_machinery_section
-from modules.land_use import land_use_section
-from modules.holding_labour_permanent import holding_labour_permanent_form
+from census_app.modules.household_information import household_information
+from census_app.modules.holding_labour_form import holding_labour_form
+from census_app.modules.holder_information_form import holder_information_form
+from census_app.modules.agricultural_machinery import agricultural_machinery_section
+from census_app. modules.land_use import land_use_section
+from census_app.modules.holding_labour_permanent import holding_labour_permanent_form
 from helpers import calculate_age
 
 # =============================================================================
