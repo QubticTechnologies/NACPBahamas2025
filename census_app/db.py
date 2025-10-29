@@ -29,7 +29,7 @@ SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
 
 def get_connection():
     return engine.connect()
-=======
+
 DB_PASS = os.getenv("DB_PASS", "sherline10152")
 DB_HOST = os.getenv("DB_HOST", "127.0.0.1")
 DB_PORT = os.getenv("DB_PORT", "5432")
@@ -47,4 +47,4 @@ try:
         print("Database connection successful!")
 except Exception as e:
     print(f"Connection failed: {e}")
->>>>>>> 52d0578 (Initial commit or update)
+
