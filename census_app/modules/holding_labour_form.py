@@ -1,6 +1,6 @@
 import streamlit as st
 from sqlalchemy import text
-from db import engine
+from census_app .db import engine
 import pandas as pd
 
 # ---------------- Options ----------------

@@ -2,7 +2,7 @@
 
 import streamlit as st
 from sqlalchemy import create_engine, text
-from config import SQLALCHEMY_DATABASE_URI
+from census_app.config import SQLALCHEMY_DATABASE_URI
 import pandas as pd
 from typing import Dict, List, Optional, Tuple
 import logging

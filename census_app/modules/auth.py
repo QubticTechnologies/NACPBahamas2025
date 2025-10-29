@@ -3,12 +3,12 @@ from sqlalchemy.orm import sessionmaker
 
 import streamlit as st
 import bcrypt
-from modules.user_utils import register_user_logic, login_user_logic
-from modules.survey_sidebar import survey_sidebar
-from modules.holder_info import show_holder_dashboard, get_holder_name
+from census_app.modules.user_utils import register_user_logic, login_user_logic
+from census_app.modules.survey_sidebar import survey_sidebar
+from census_app.modules.holder_info import show_holder_dashboard, get_holder_name
 from sqlalchemy import text
-from .db import engine
-from .config import TOTAL_SURVEY_SECTIONS
+from census_app.db import engine
+from census_app.config import TOTAL_SURVEY_SECTIONS
 import pandas as pd
 import requests
 from streamlit_js_eval import get_geolocation

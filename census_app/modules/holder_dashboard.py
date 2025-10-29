@@ -15,9 +15,9 @@ from config import (
     HOLDERS_TABLE,
     TOTAL_SURVEY_SECTIONS
 )
-from helpers import calculate_age
-from modules.agricultural_machinery import agricultural_machinery_section
-from modules.land_use import land_use_section
+from census_app.helpers import calculate_age
+from census_app.modules.agricultural_machinery import agricultural_machinery_section
+from census_app.modules.land_use import land_use_section
 
 
 # =============================================================================

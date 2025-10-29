@@ -11,7 +11,7 @@ import os
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import your existing database configuration
-from .db import engine
+from census_app.db import engine
 from sqlalchemy import text
 
 
