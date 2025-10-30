@@ -8,14 +8,14 @@ from dotenv import load_dotenv
 
 
 
-<<<<<<< HEAD
+
 # --- Load environment variables from .env file ---
-=======
+
 # --------------------------------------------------------
 # Environment Setup
 # --------------------------------------------------------
 #os.environ["LOCAL_DEV"] = "1"  # force local mode
->>>>>>> 52d0578 (Initial commit or update)
+
 load_dotenv()
 
 # ------------------- ENVIRONMENT SWITCH -------------------
