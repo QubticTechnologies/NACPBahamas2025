@@ -12,7 +12,8 @@ import os
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 # Create SQLAlchemy engine
-engine = create_engine(DATABASE_URL)
+engine = create_engine(postgresql+psycopg2://servey_census_user:pA16sWRzYkKqhOLJoLiiHcHnaRu7q3oJ@dpg-d3msd5s9c44c73ccd240-a.oregon-postgres.render.com:5432/servey_census?sslmode=require
+)
 
 # Create session
 SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
