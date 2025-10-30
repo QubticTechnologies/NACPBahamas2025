@@ -3,10 +3,30 @@ import os
 from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
+from sqlalchemy import create_engine
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+import os
+
+# Load database URL from environment variable
+DATABASE_URL = os.getenv("DATABASE_URL")
+
+# Create SQLAlchemy engine
+engine = create_engine(DATABASE_URL)
+
+# Create session
+SessionLocal = sessionmaker(bind=engine, autocommit=False, autoflush=False)
+
+# Base class for models
+Base = declarative_base()
+
+
+
+
+
 load_dotenv()
 
 DB_USER = os.getenv("DB_USER", "postgres")
-<<<<<<< HEAD
 DB_PASS = os.getenv("DB_PASS", "")
 DB_HOST = os.getenv("DB_HOST", "127.0.0.1")
 DB_PORT = os.getenv("DB_PORT", "5432")
